@@ -1,5 +1,7 @@
 package common
 
+import "net/http"
+
 type BusinessCode int
 type Result struct {
 	Code BusinessCode `json:"code"`
@@ -9,7 +11,7 @@ type Result struct {
 
 func (r *Result) Success(data any) *Result {
 
-	r.Code = 200
+	r.Code = http.StatusOK
 	r.Msg = "success"
 	r.Data = data
 	return r
